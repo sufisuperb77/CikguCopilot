@@ -677,12 +677,17 @@
       .footer-inner { grid-template-columns: 1fr; }
       .section { padding: 56px 0; }
       .webinar-card { padding: 24px; }
-      /* Hero mobile: center content + dark overlay */
+      /* Hero mobile: contain full image, center content + dark overlay */
+      #home {
+        background: url('Img/HeroBG.png') top center / contain no-repeat;
+        background-color: #1e1b4b;
+        min-height: calc(100vw * (1024 / 1536));
+      }
       #home::after {
         content: '';
         position: absolute;
         inset: 0;
-        background: rgba(60, 10, 120, 0.55);
+        background: rgba(60, 10, 120, 0.45);
         pointer-events: none;
       }
       .hero-inner { justify-content: center; }
@@ -881,7 +886,7 @@
         <img src="Img/Prompt-A-Thon-Image-1920x605px.png" alt="Prompt-A-Thon" />
         <div class="kahoot-banner-overlay">
           <h3>Tahniah Kepada Para Pemenang Kuiz Kahoot!</h3>
-          <p>Anda akan dijemput untuk berganding dengan peserta lain di <strong>pejabat Microsoft Malaysia</strong> untuk berkolaborasi, berinovasi, dan menghasilkan prompt yang menonjol. Serlahkan kreativiti anda, perhalusi idea, dan bersaing untuk memenangi hadiah menarik!</p>
+          <p>Anda akan dijemput untuk menyertai sesi eksklusif Prompt-A-Thon untuk berganding dengan peserta lain di <strong>pejabat Microsoft Malaysia</strong> untuk berkolaborasi, berinovasi, dan menghasilkan prompt yang menonjol. Serlahkan kreativiti anda, perhalusi idea, dan bersaing untuk memenangi hadiah menarik!</p>
         </div>
       </div>
     </div>
@@ -1202,7 +1207,7 @@
           Apakah syarat untuk menyertai Prompt-A-Thon?
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-answer">Hanya pemenang Kuiz Kahoot yang layak menerima jemputan eksklusif untuk menyertai Prompt-A-Thon di pejabat Microsoft Malaysia. Acara ini adalah percuma untuk para pemenang.</div>
+        <div class="faq-answer">Hanya pemenang Kuiz Kahoot yang layak menerima jemputan eksklusif untuk menyertai Prompt-A-Thon di pejabat Microsoft Malaysia.</div>
       </div>
 
       <div class="faq-item" role="listitem">
