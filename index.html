@@ -682,8 +682,11 @@
       .webinar-card { padding: 24px; }
       /* Hero mobile: cover full section */
       #home {
-        background: url('Img/HeroMobile.png') center -115px / cover no-repeat;
-        min-height: 100vh;
+        background: url('Img/HeroMobile.png') center top / cover no-repeat;
+        min-height: unset;
+        padding-top: calc(var(--nav-h) + 48px);
+        padding-bottom: 64px;
+        align-items: flex-start;
       }
       #home::after {
         content: '';
