@@ -665,24 +665,25 @@
       .webinar-card { grid-template-columns: 1fr; }
       .hero-bg-img { display: none; }
       #home {
-        background: url('Img/HeroMobile.png') right 60% / cover no-repeat;
+        background: url('Img/HeroBG.png') right 60% / cover no-repeat;
       }
       .winners-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
       .footer-inner { grid-template-columns: 1fr 1fr; }
     }
-    @media (max-width: 640px) {
-      .container { padding: 0 26px 0 56px; }
+    @media (max-width: 854px) {
       .nav-links { display: none; flex-direction: column; gap: 4px; position: absolute; top: var(--nav-h); left: 0; right: 0; background: var(--white); padding: 16px; box-shadow: var(--shadow); }
       .nav-links.open { display: flex; }
       .nav-toggle { display: flex; }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 0 26px 0 56px; }
       .footer-inner { grid-template-columns: 1fr; }
       .section { padding: 56px 0; }
       .webinar-card { padding: 24px; }
-      /* Hero mobile: contain full image, center content + dark overlay */
+      /* Hero mobile: cover full section */
       #home {
-        background: url('Img/HeroMobile.png') top center / contain no-repeat;
-        background-color: #1e1b4b;
-        min-height: calc(100vw * (1024 / 1536));
+        background: url('Img/HeroMobile.png') center -115px / cover no-repeat;
+        min-height: 100vh;
       }
       #home::after {
         content: '';
