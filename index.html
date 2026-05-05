@@ -487,7 +487,7 @@
     .winner-card:nth-child(3) { border-top-color: #b45309; }
     .winner-poster {
       width: 100%;
-      aspect-ratio: 16/9;
+      aspect-ratio: 4/3;
       background: var(--purple-pale);
       display: flex;
       flex-direction: column;
@@ -501,7 +501,8 @@
     .winner-poster img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      object-position: center top;
       display: block;
     }
     .winner-poster-empty {
@@ -1128,25 +1129,19 @@
     </div>
 
     <div class="winner-panel active" id="kahoot">
-      <div style="max-width:480px; margin:0 auto;">
+      <div style="max-width:720px; margin:0 auto;">
         <div class="winner-card">
           <div class="winner-poster">
-            <div class="winner-poster-empty">
-              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="2"/>
-                <circle cx="8.5" cy="8.5" r="1.5"/>
-                <polyline points="21 15 16 10 5 21"/>
-              </svg>
-              <span>Poster Pemenang Akan Dimuatnaik</span>
-            </div>
+            <img src="winnerKahoot/Kahoot-Winner-Announcement_Cikgu-Copilot-Challenge-Tema-1.png" alt="Poster Pemenang Kuiz Kahoot" />
           </div>
           <div class="winner-label"><svg class="svg-icon" aria-hidden="true" style="vertical-align:middle;margin-right:6px;"><use href="#icon-trophy"/></svg> Pemenang Kuiz Kahoot</div>
         </div>
+        <p style="margin-top:16px; text-align:center; font-size:.9rem; color:var(--purple-dark); font-weight:600; line-height:1.5; padding:0 8px;">Anda akan menerima jemputan eksklusif melalui e-mel untuk menghadiri sesi Prompt-A-Thon di pejabat Microsoft Malaysia.</p>
       </div>
     </div>
 
     <div class="winner-panel" id="artefact-w">
-      <div style="max-width:480px; margin:0 auto;">
+      <div style="max-width:720px; margin:0 auto;">
         <div class="winner-card">
           <div class="winner-poster">
             <div class="winner-poster-empty">
