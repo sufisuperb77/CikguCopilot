@@ -706,6 +706,28 @@
       .hero-text > div:first-child img { width: 100px !important; height: 100px !important; }
       .hero-btns { justify-content: center; }
     }
+
+    /* ===== POSTER SLIDER ===== */
+    #winners .container { padding-left: 26px; padding-right: 26px; margin-left: auto; margin-right: auto; }
+    #winners { overflow-x: hidden; }
+    .poster-slider { position: relative; overflow: hidden; width: 100%; max-width: 100%; }
+    .poster-slides { display: flex; width: 100%; transition: transform .45s cubic-bezier(.4,0,.2,1); will-change: transform; }
+    .poster-slide { flex: 0 0 100%; min-width: 0; overflow: hidden; }
+    .poster-slide img { width: 100%; height: auto; display: block; max-width: 100%; }
+    .poster-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(109,40,217,.75); border: none; color: #fff;
+      width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; z-index: 2; transition: background .2s;
+    }
+    .poster-arrow:hover { background: var(--purple-dark); }
+    .poster-arrow.prev { left: 10px; }
+    .poster-arrow.next { right: 10px; }
+    .poster-dots { display: flex; justify-content: center; gap: 8px; padding: 10px 0 4px; }
+    .poster-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--purple-light); border: none; cursor: pointer; padding: 0; transition: background .2s; }
+    .poster-dot.active { background: var(--purple-dark); }
+    .slide-label { text-align: center; font-size: .78rem; font-weight: 700; color: var(--purple-mid); letter-spacing: .04em; padding-bottom: 2px; }
   </style>
 </head>
 <body>
@@ -1129,15 +1151,27 @@
     </div>
 
     <div class="winner-panel active" id="kahoot">
-      <div style="max-width:720px; margin:0 auto;">
-        <div class="winner-card">
-          <div class="winner-poster">
-            <img src="winnerKahoot/Kahoot-Winner-Announcement_Cikgu-Copilot-Challenge-Tema-1.png" alt="Poster Pemenang Kuiz Kahoot" />
+      <div class="winner-card">
+        <div class="poster-slider" id="kahootSlider">
+          <div class="poster-slides" id="kahootSlides">
+            <div class="poster-slide">
+              <img src="winnerKahoot/Kahoot-Winner-Announcement_Cikgu-Copilot-Challenge-Tema-1.png" alt="Poster Pemenang Kuiz Kahoot Tema 1" />
+            </div>
+            <div class="poster-slide">
+              <img src="winnerKahoot/Kahoot-Winner-Announcement_Cikgu-Copilot-Challenge-Tema-2.jpg.jpeg" alt="Poster Pemenang Kuiz Kahoot Tema 2" />
+            </div>
           </div>
-          <div class="winner-label"><svg class="svg-icon" aria-hidden="true" style="vertical-align:middle;margin-right:6px;"><use href="#icon-trophy"/></svg> Pemenang Kuiz Kahoot</div>
+          <button class="poster-arrow prev" aria-label="Sebelumnya" onclick="kahootSlide(-1)">&#8249;</button>
+          <button class="poster-arrow next" aria-label="Seterusnya" onclick="kahootSlide(1)">&#8250;</button>
         </div>
-        <p style="margin-top:16px; text-align:center; font-size:.9rem; color:var(--purple-dark); font-weight:600; line-height:1.5; padding:0 8px;">Anda akan menerima jemputan eksklusif melalui e-mel untuk menghadiri sesi Prompt-A-Thon di pejabat Microsoft Malaysia.</p>
+        <div class="poster-dots">
+          <button class="poster-dot active" id="kahootDot0" onclick="kahootGoTo(0)" aria-label="Tema 1"></button>
+          <button class="poster-dot" id="kahootDot1" onclick="kahootGoTo(1)" aria-label="Tema 2"></button>
+        </div>
+        <div class="slide-label" id="kahootSlideLabel">Tema 1</div>
+        <div class="winner-label"><svg class="svg-icon" aria-hidden="true" style="vertical-align:middle;margin-right:6px;"><use href="#icon-trophy"/></svg> Pemenang Kuiz Kahoot</div>
       </div>
+      <p style="margin-top:16px; text-align:center; font-size:.9rem; color:var(--purple-dark); font-weight:600; line-height:1.5; padding:0 8px;">Anda akan menerima jemputan eksklusif melalui e-mel untuk menghadiri sesi Prompt-A-Thon di pejabat Microsoft Malaysia.</p>
     </div>
 
     <div class="winner-panel" id="artefact-w">
@@ -1365,6 +1399,22 @@
       }
     });
   });
+
+  /* ===== KAHOOT POSTER SLIDER ===== */
+  (function () {
+    const labels = ['Tema 1', 'Tema 2'];
+    let cur = 0;
+    const total = 2;
+    function update() {
+      document.getElementById('kahootSlides').style.transform = 'translateX(-' + (cur * 100) + '%)';
+      document.getElementById('kahootSlideLabel').textContent = labels[cur];
+      for (let i = 0; i < total; i++) {
+        document.getElementById('kahootDot' + i).classList.toggle('active', i === cur);
+      }
+    }
+    window.kahootSlide = function (dir) { cur = (cur + dir + total) % total; update(); };
+    window.kahootGoTo = function (idx) { cur = idx; update(); };
+  })();
 </script>
 </body>
 </html>
